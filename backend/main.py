@@ -2,7 +2,9 @@ from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy import Column, Integer, String, create_engine
-from sqlalchemy.ext.declarative import declarative_base
+# SQLAlchemy 2.0 moves ``declarative_base`` to ``sqlalchemy.orm``.
+# Importing from ``sqlalchemy.ext.declarative`` raises a deprecation warning.
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 import secrets
 import hashlib
